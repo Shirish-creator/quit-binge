@@ -182,9 +182,14 @@ export default function Home() {
             </defs>
           </svg>
           </div>
-        
-         <div className="w-10 h-10"> <HeaderRiveComponent className="w-full h-full" /></div>
-       
+        <div className="relative">
+          <div className="w-16 h-3 bg-[#D9D9D9] -z-1 rounded-full p-1 absolute -left-10 bottom-2">
+            <span className="absolute left-2 bottom-3 text-xs" style={{fontFamily:'Cal Sans'}}> Lv.2</span>
+          <div className="w-full h-1 bg-[#34C759] -z-1 rounded-full ">
+        </div>
+          </div>
+         <div className="w-10 h-10 z-2"> <HeaderRiveComponent className="w-full h-full" /></div>
+         </div>
 
         </div>
        
@@ -390,6 +395,14 @@ width={239}
         </div> */}
        
       </div>
+      <button
+  className="cursor-pointer w-16 h-16 flex items-center justify-center bg-red-500 absolute rounded-full bottom-26 right-6
+             active:translate-y-1 active:shadow-[inset_0_4px_0_0_rgba(0,0,0,0.15)] transition-all duration-150"
+  style={{ boxShadow: '0 -4px 0 0 rgba(0, 0, 0, 0.15) inset' }}
+>
+<span className="text-white text-md" style={{fontFamily:'Cal Sans'}}>Panic!</span>
+
+</button>
     </main>
   );
 }
