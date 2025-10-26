@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col relative gap-0  h-full ">
-      <div className="h-[116px] px-6 w-full items-end pt-16 z-1 bg-white rounded-b-[32px]" style={{boxShadow: '0 -4px 0 0 rgba(0, 0, 0, 0.15) inset'}}> 
+      <div className="h-[80px] pt-4 lg:h-[116px] lg:pt-16  px-6 w-full items-end z-1 bg-white rounded-b-[32px]" style={{boxShadow: '0 -4px 0 0 rgba(0, 0, 0, 0.15) inset'}}> 
         
        <div className="flex flex-row">
         <div className="flex flex-row w-full justify-between items-center gap-6 relative">
@@ -190,7 +190,24 @@ export default function Home() {
        
        </div>
         </div>
-          <div className="fixed top-32 lg:top-52 left-1/2 transform -translate-x-1/2 w-fit flex flex-row gap-2 items-center bg-[#D3F1A7] text-[#6A9A23] py-2 px-4 z-20 rounded-full whitespace-nowrap">
+          
+
+        <video
+        className={`absolute inset-0 w-full h-full object-cover -z-0 top-16 transition-opacity duration-[2000ms] ease-out pointer-events-none ${
+          videoLoaded ? "opacity-100" : "opacity-0"
+        }`}
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ mixBlendMode: "multiply" }}
+      >
+        <source src="/bg/bgvideoone.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="flex flex-col gap-3 pt-4 px-6 justify-center items-center" 
+      >
+        <div className=" w-fit flex flex-row gap-2 items-center bg-[#D3F1A7] text-[#6A9A23] py-2 px-4 z-20 rounded-full whitespace-nowrap">
          <svg
   width={20}
   height={20}
@@ -208,22 +225,6 @@ export default function Home() {
 
           <p className="text-sm">10 days binge free</p>
         </div>
-
-        <video
-        className={`absolute inset-0 w-full h-full object-cover -z-0 top-16 transition-opacity duration-[2000ms] ease-out pointer-events-none ${
-          videoLoaded ? "opacity-100" : "opacity-0"
-        }`}
-        autoPlay
-        loop
-        muted
-        playsInline
-        style={{ mixBlendMode: "multiply" }}
-      >
-        <source src="/bg/bgvideoone.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div className="flex flex-col gap-0 pt-16 px-6 justify-center items-center" 
-      >
         <div className="flex flex-col gap-1 items-center relative">
         <svg
   width={38}

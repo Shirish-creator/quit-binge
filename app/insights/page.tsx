@@ -1,8 +1,8 @@
 export default function Insights() {
   return (
     <main className="flex flex-col relative gap-0 h-full bg-[#FFF9F3]">
-      <div className="h-[116px] px-6 w-full items-end pt-16 z-1 bg-white rounded-b-[32px]" style={{boxShadow: '0 -4px 0 0 rgba(0, 0, 0, 0.15) inset'}}> 
-        <div className="flex flex-row">
+      <div className="h-[80px] pt-4 lg:h-[116px] lg:pt-16  px-6 w-full items-end z-1 bg-white rounded-b-[32px]" style={{boxShadow: '0 -4px 0 0 rgba(0, 0, 0, 0.15) inset'}}> 
+      <div className="flex flex-row">
           <div className="flex flex-row items-center gap-6">
           <div className="rounded-full border-1 border-gray-400 w-10 h-10 flex items-center justify-center"> 
           <svg width={20} height={20} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
