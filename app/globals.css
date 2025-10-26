@@ -48,11 +48,83 @@ h1,h2,h3,h4,h5,h6{
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --colors-surface-bg:#FFF9F3
   --colors-accent-200:#EFFEFF;
-  --colors-accent-500:#57E9EE;
+  --colors-accent-300:#aefaff;
+
+  --colors-accent-500:#7cfbff;
   --colors-text-secondary: rgba(127, 127, 127, 0.8);
+  --colors-text-primary:#090909;
+
+}
 
 
+@keyframes slideUpFadeIn {
+  0% {
+    transform: translate(0%, 60px); /* start slightly below */
+    opacity: 0;
+  }
+  60% {
+    transform: translate(0%, -4px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0%, 0);
+    opacity: 1;
+  }
+}
+
+.animate-slideUpFadeIn {
+  animation: slideUpFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+
+@keyframes bounceScaleIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Base bounce class */
+.animate-bounceScaleIn {
+  animation: bounceScaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Staggered variants with slight delays */
+.animate-bounceScaleIn1 {
+  animation: bounceScaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0s;
+}
+
+.animate-bounceScaleIn2 {
+  animation: bounceScaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+.animate-bounceScaleIn3 {
+  animation: bounceScaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+.animate-bounceScaleIn4 {
+  animation: bounceScaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+.animate-bounceScaleIn5 {
+  animation: bounceScaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.4s;
 }
 
 @theme inline {
