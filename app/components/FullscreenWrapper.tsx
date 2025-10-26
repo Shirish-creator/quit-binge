@@ -1,25 +1,27 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
-export default function FullscreenWrapper({ children }: { children: React.ReactNode }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Automatically enter fullscreen on mobile
-    if (window.innerWidth < 1024) {
-      const el = containerRef.current;
-      if (el && el.requestFullscreen) {
-        el.requestFullscreen().catch(() => {});
-      } else if (el && (el as any).webkitRequestFullscreen) {
-        // for Safari
-        (el as any).webkitRequestFullscreen();
-      }
-    }
-  }, []);
-
+export default function FullscreenWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div ref={containerRef} className="w-full h-full">
+    <div className="relative w-full h-full">
+      <button
+        onClick={() => {
+          const el = document.documentElement;
+          if (el.requestFullscreen) {
+            el.requestFullscreen();
+          } else if ((el as any).webkitRequestFullscreen) {
+            // For Safari
+            (el as any).webkitRequestFullscreen();
+          }
+        }}
+        className="fixed top-4 right-4 bg-black text-white px-4 py-2 rounded-lg z-50"
+      >
+        Go Fullscreen
+      </button>
+
       {children}
     </div>
   );
