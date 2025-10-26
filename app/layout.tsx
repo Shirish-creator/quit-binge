@@ -5,6 +5,8 @@ import Link from "next/link";
 import localFont from "next/font/local";
 import SystemTime from "./components/SystemTime";
 import Navigation from "./components/Navigation";
+import FullscreenWrapper from "./components/FullscreenWrapper";
+
 
 const SfProDisplay = localFont({
   src: [
@@ -132,7 +134,9 @@ export default function RootLayout({
             
             {/* Main Content */}
             <div className="flex-1">
+            <FullscreenWrapper>
               {children}
+              </FullscreenWrapper>
             </div>
            
             <Navigation/>
