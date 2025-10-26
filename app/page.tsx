@@ -1,7 +1,34 @@
 "use client";
 import { useEffect, useState } from "react";
+import Rive from '@rive-app/react-canvas';
+import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
 
 export default function Home() {
+
+
+  const STATE_MACHINE_NAME = "mood_selector";
+  const INPUT_NAME = "mood";
+
+  const { rive, RiveComponent } = useRive({
+    src: "/quit_binge.riv",
+    stateMachines: STATE_MACHINE_NAME,
+    autoplay: true,
+  });
+
+  // Access the "mood" numeric input from the state machine
+  const moodInput = useStateMachineInput(rive, STATE_MACHINE_NAME, INPUT_NAME);
+
+  // Example: Change mood when a button is clicked
+  const handleMoodChange = (value: number) => {
+    if (moodInput) moodInput.value = value;
+  };
+
+  // Set default mood value to 1
+  useEffect(() => {
+    if (moodInput) {
+      moodInput.value = 1;
+    }
+  }, [moodInput]);
 
   const [videoLoaded, setVideoLoaded] = useState(false);
   useEffect(() => {
@@ -156,7 +183,7 @@ export default function Home() {
        </div>
         </div>
         <video
-        className={`absolute inset-0 w-full h-full object-cover -z-0 top-16 transition-opacity duration-[2000ms] ease-out ${
+        className={`absolute inset-0 w-full h-full object-cover -z-0 top-16 transition-opacity duration-[2000ms] ease-out pointer-events-none ${
           videoLoaded ? "opacity-100" : "opacity-0"
         }`}
         autoPlay
@@ -193,7 +220,18 @@ export default function Home() {
         <h1 className="font-bold text-xl mt-4">Today’s Quote</h1>
         <p  className="text-[var(--colors-text-secondary)] text-center">Even storms have breaks between them — you are becoming your calm </p>
         </div>
-        
+        <div className="w-full flex justify-center">
+        <div className="w-64 h-64" >
+        <RiveComponent className="w-64 h-64" />
+        </div></div>
+        <div className="flex gap-2 mt-8">
+  <button className="cursor-pointer" onClick={() => handleMoodChange(0)}>😐 Neutral</button>
+  <button className="cursor-pointer" onClick={() => handleMoodChange(1)}>😊 Smirk</button>
+  <button className="cursor-pointer" onClick={() => handleMoodChange(2)}>😊 Happy</button>
+  <button className="cursor-pointer" onClick={() => handleMoodChange(3)}>😢 Sad</button>
+  <button className="cursor-pointer" onClick={() => handleMoodChange(4)}>😡 Angry</button>
+</div>
+       
       </div>
     </main>
   );
