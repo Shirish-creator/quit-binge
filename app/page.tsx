@@ -1,4 +1,16 @@
+"use client";
+import { useEffect, useState } from "react";
+
 export default function Home() {
+
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  useEffect(() => {
+    // Trigger fade-in after small delay (ensures page is ready)
+    const timer = setTimeout(() => setVideoLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+
   return (
     <main className="flex flex-col relative gap-0  h-full ">
       <div className="h-[116px] px-6 w-full items-end pt-16 z-1 bg-white rounded-b-[32px]" style={{boxShadow: '0 -4px 0 0 rgba(0, 0, 0, 0.15) inset'}}> 
@@ -144,20 +156,44 @@ export default function Home() {
        </div>
         </div>
         <video
-        className="absolute inset-0 w-full h-full object-cover -z-0 top-16"
+        className={`absolute inset-0 w-full h-full object-cover -z-0 top-16 transition-opacity duration-[2000ms] ease-out ${
+          videoLoaded ? "opacity-100" : "opacity-0"
+        }`}
         autoPlay
-        style={{mixBlendMode:'multiply'}}
         loop
         muted
         playsInline
+        style={{ mixBlendMode: "multiply" }}
       >
         <source src="/bg/bgvideoone.mp4" type="video/mp4" />
-        {/* Fallback for browsers that don't support video */}
         Your browser does not support the video tag.
       </video>
-      <div className="flex flex-col gap-4 pt-8 px-6 items-center" 
+      <div className="flex flex-col gap-4 pt-8 px-6 " 
       >
-        <h1 className="font-bold text-xl">Today’s Quote</h1>
+        <div className="flex flex-col gap-1 items-center">
+        <svg
+  width={38}
+  height={28}
+  viewBox="0 0 38 28"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M9.6 27.648C6.72 27.648 4.384 26.656 2.592 24.672C0.864 22.688 0 19.968 0 16.512C0 12.8 1.088 9.6 3.264 6.912C5.504 4.16 8.384 2.176 11.904 0.959999L14.592 0L17.184 6.432L14.496 7.392C12.512 8.096 11.008 8.832 9.984 9.6C8.96 10.368 8.224 11.392 7.776 12.672C8.544 12.48 9.28 12.384 9.984 12.384C11.904 12.384 13.632 13.152 15.168 14.688C16.704 16.16 17.472 17.952 17.472 20.064C17.472 22.112 16.672 23.904 15.072 25.44C13.536 26.912 11.712 27.648 9.6 27.648ZM29.76 27.648C26.88 27.648 24.544 26.656 22.752 24.672C21.024 22.688 20.16 19.968 20.16 16.512C20.16 12.8 21.248 9.6 23.424 6.912C25.664 4.16 28.544 2.176 32.064 0.959999L34.752 0L37.344 6.432L34.656 7.392C32.672 8.096 31.168 8.832 30.144 9.6C29.12 10.368 28.384 11.392 27.936 12.672C28.704 12.48 29.44 12.384 30.144 12.384C32.064 12.384 33.792 13.152 35.328 14.688C36.864 16.16 37.632 17.952 37.632 20.064C37.632 22.112 36.832 23.904 35.232 25.44C33.696 26.912 31.872 27.648 29.76 27.648Z"
+    fill="#7F7F7F"
+    fillOpacity="0.5"
+    style={{ mixBlendMode: "luminosity" }}
+  />
+  <path
+    d="M9.6 27.648C6.72 27.648 4.384 26.656 2.592 24.672C0.864 22.688 0 19.968 0 16.512C0 12.8 1.088 9.6 3.264 6.912C5.504 4.16 8.384 2.176 11.904 0.959999L14.592 0L17.184 6.432L14.496 7.392C12.512 8.096 11.008 8.832 9.984 9.6C8.96 10.368 8.224 11.392 7.776 12.672C8.544 12.48 9.28 12.384 9.984 12.384C11.904 12.384 13.632 13.152 15.168 14.688C16.704 16.16 17.472 17.952 17.472 20.064C17.472 22.112 16.672 23.904 15.072 25.44C13.536 26.912 11.712 27.648 9.6 27.648ZM29.76 27.648C26.88 27.648 24.544 26.656 22.752 24.672C21.024 22.688 20.16 19.968 20.16 16.512C20.16 12.8 21.248 9.6 23.424 6.912C25.664 4.16 28.544 2.176 32.064 0.959999L34.752 0L37.344 6.432L34.656 7.392C32.672 8.096 31.168 8.832 30.144 9.6C29.12 10.368 28.384 11.392 27.936 12.672C28.704 12.48 29.44 12.384 30.144 12.384C32.064 12.384 33.792 13.152 35.328 14.688C36.864 16.16 37.632 17.952 37.632 20.064C37.632 22.112 36.832 23.904 35.232 25.44C33.696 26.912 31.872 27.648 29.76 27.648Z"
+    fill="#3D3D3D"
+    style={{ mixBlendMode: "overlay" }}
+  />
+</svg>
+        <h1 className="font-bold text-xl mt-4">Today’s Quote</h1>
+        <p  className="text-[var(--colors-text-secondary)] text-center">Even storms have breaks between them — you are becoming your calm </p>
+        </div>
+        
       </div>
     </main>
   );

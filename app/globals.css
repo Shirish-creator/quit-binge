@@ -34,6 +34,10 @@
 main{
   background-color: #FFF9F3;
 }
+
+p{
+  font-family: 'Inter',sans-serif;
+}
 h1,h2,h3,h4,h5,h6{
   font-family: "Cal Sans", sans-serif;
   font-weight: 400;
@@ -46,6 +50,9 @@ h1,h2,h3,h4,h5,h6{
   --foreground: #171717;
   --colors-accent-200:#EFFEFF;
   --colors-accent-500:#57E9EE;
+  --colors-text-secondary: rgba(127, 127, 127, 0.8);
+
+
 }
 
 @theme inline {
@@ -67,4 +74,19 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Remove all link outlines */
+a:focus,
+a:active,
+a:focus-visible,
+a:hover {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Specifically target navigation links */
+nav a {
+  outline: none !important;
+  box-shadow: none !important;
 }

@@ -23,11 +23,12 @@ export default function Navigation() {
             <Link 
               key={item.href}
               href={item.href} 
-              className={`flex items-center justify-center h-[44px] w-[44px] rounded-md transition-all duration-200 ${
+              className={`flex items-center justify-center h-[44px] w-[44px] rounded-md transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:outline-none active:outline-none hover:outline-none ${
                 isActive 
                   ? 'bg-[var(--colors-accent-200)] border-1 border-[var(--colors-accent-500)]' 
                   : ''
               }`}
+              style={{ outline: 'none' }}
             >
               {item.label === "Home" && (
                  <svg
